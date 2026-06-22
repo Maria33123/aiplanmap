@@ -1,0 +1,41 @@
+﻿Repair started: 2026-06-20T13:11:01
+确定。
+
+确定。
+
+找不到元素。
+
+
+找不到元素。
+
+
+
+IPv4 excluded ranges:
+
+协议 tcp 端口排除范围
+
+开始端口    结束端口      
+----------    --------      
+
+* - 管理的端口排除。
+
+
+IPv6 excluded ranges:
+
+协议 tcp 端口排除范围
+
+开始端口    结束端口      
+----------    --------      
+
+* - 管理的端口排除。
+
+
+IPv4 dynamic TCP range:
+
+协议 tcp 动态端口范围
+---------------------------------
+启动端口        : 49152
+端口数          : 16384
+
+
+FAILED: Port 3000 is still unavailable after the repair.
