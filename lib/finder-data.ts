@@ -1,4 +1,4 @@
-﻿import {
+import {
   aiTools,
   platforms as mockPlatforms,
   recommendationPlansByToolId,
@@ -54,94 +54,94 @@ export const finderPreferences: Array<{
     id: "balanced",
     title: {
       en: "Balanced recommendation",
-      zh: "缁煎悎鎺ㄨ崘",
+      zh: "综合推荐",
     },
     description: {
       en: "Balance price, availability and risk.",
-      zh: "骞宠　浠锋牸銆佸彲鐢ㄦ€у拰椋庨櫓銆?",
+      zh: "平衡价格、可用性和风险",
     },
   },
   {
     id: "lowest",
     title: {
       en: "Lowest price",
-      zh: "鏈€浣庝环鏍?",
+      zh: "最低价格",
     },
     description: {
       en: "Prioritize the lowest-price platform.",
-      zh: "浼樺厛灞曠ず浠锋牸鏈€浣庣殑骞冲彴銆?",
+      zh: "优先展示价格最低平台",
     },
   },
   {
     id: "safer",
     title: {
       en: "Lower risk",
-      zh: "椋庨櫓鏇翠綆",
+      zh: "风险更低",
     },
     description: {
       en: "Prioritize more conservative options.",
-      zh: "浼樺厛灞曠ず鏇寸ǔ濡ョ殑閫夋嫨銆?",
+      zh: "优先展示更稳妥方案",
     },
   },
 ];
 
 const availabilityCopy: Record<string, LocalizedText> = {
-  High: { en: "High", zh: "楂?" },
-  Medium: { en: "Medium", zh: "涓?" },
-  Always: { en: "Always", zh: "濮嬬粓鍙敤" },
+  High: { en: "High", zh: "高" },
+  Medium: { en: "Medium", zh: "中" },
+  Always: { en: "Always", zh: "始终可用" },
 };
 
 const riskCopy: Record<string, LocalizedText> = {
-  Moderate: { en: "Moderate", zh: "涓瓑" },
-  Lowest: { en: "Lowest", zh: "鏈€浣?" },
+  Moderate: { en: "Moderate", zh: "中等" },
+  Lowest: { en: "Lowest", zh: "最低" },
 };
 
 const bestForCopy: Record<string, LocalizedText> = {
   "Lowest-price priority": {
     en: "Lowest-price priority",
-    zh: "鏈€浣庝环浼樺厛",
+    zh: "最低价优先",
   },
   "Sharing transparency": {
     en: "Sharing transparency",
-    zh: "鍏变韩閫忔槑搴︿紭鍏?",
+    zh: "共享透明度优先",
   },
   "Flexible shared plans": {
     en: "Flexible shared plans",
-    zh: "鐏垫椿鏂规",
+    zh: "共享方案灵活",
   },
   "Account safety first": {
     en: "Account safety first",
-    zh: "璐﹀彿瀹夊叏浼樺厛",
+    zh: "账号安全优先",
   },
 };
 
 const platformDescriptionCopy: Record<ProviderId, LocalizedText> = {
   official: {
     en: "Account safety first, highest price.",
-    zh: "璐﹀彿瀹夊叏浼樺厛锛屼环鏍兼渶楂?",
+    zh: "账号安全优先，价格最高",
   },
   gamsgo: {
     en: "Clear price advantage, useful for lowest-price priority.",
-    zh: "浠锋牸浼樺娍鏄庢樉锛岄€傚悎鏈€浣庝环浼樺厛",
+    zh: "价格优势明显，适合最低价优先",
   },
   spliiit: {
     en: "Higher sharing transparency, useful for group sharing.",
-    zh: "鍏变韩閫忔槑搴﹁緝楂橈紝閫傚悎澶氫汉鍏变韩",
+    zh: "共享透明度较高，适合多人共享",
   },
   sharesub: {
     en: "Flexible shared plans, useful as an additional option.",
-    zh: "鍏变韩鏂规鐏垫椿锛屽彲浣滀负琛ュ厖閫夋嫨",
+    zh: "共享方案灵活，可作为补充选择",
   },
 };
 
 const ctaCopy: Record<RecommendationPlanMock["ctaLabel"], LocalizedText> = {
   "View Platform Plan": {
     en: "View Platform Plan",
-    zh: "鏌ョ湅骞冲彴鏂规",
+    zh: "查看平台方案",
   },
   "View Official Plan": {
     en: "View Official Plan",
-    zh: "鏌ョ湅瀹樻柟鏂规",
+    zh: "查看官方方案",
   },
 };
 
@@ -185,43 +185,43 @@ export const finderFaqs: Array<{
   answer: LocalizedText;
 }> = [
   {
-  question: {
+    question: {
       en: "Are shared AI subscriptions safe?",
-      zh: "鍏变韩 AI 璁㈤槄瀹夊叏鍚楋紵",
+      zh: "共享 AI 订阅安全吗？",
     },
     answer: {
       en: "Shared subscriptions can involve availability, refund, stability and policy risks. Review each platform's plan details before deciding.",
-      zh: "鍏变韩璁㈤槄骞冲彴鍙兘娑夊強璐﹀彿鍙敤鎬с€侀€€娆俱€佽闂ǔ瀹氭€у拰骞冲彴鏀跨瓥鍙樺寲绛夐闄┿€傞€夋嫨鍓嶈鏌ョ湅姣忎釜鏂规璇存槑銆?",
+      zh: "共享订阅平台可能涉及账号可用性、退款、访问稳定性和平台政策变化等风险。选择前请查看每个方案说明。",
     },
   },
   {
     question: {
       en: "Why do prices vary so much between platforms?",
-      zh: "涓轰粈涔堜笉鍚屽钩鍙颁环鏍煎樊杩欎箞澶氾紵",
+      zh: "为什么不同平台价格差这么多？",
     },
     answer: {
       en: "Different platforms may use different subscription models, sharing rules, inventory and service policies, so the final monthly cost can vary.",
-      zh: "涓嶅悓骞冲彴鐨勮闃呮ā寮忋€佸叡浜鍒欍€佸簱瀛樺拰鏈嶅姟鏀跨瓥涓嶅悓锛屽洜姝ゆ渶缁堟湀璐逛細鏈夋槑鏄惧樊寮傘€?",
+      zh: "不同平台的订阅模式、共享规则、库存和服务政策不同，因此最终月费会有明显差异。",
     },
   },
   {
     question: {
       en: "Is the lowest-price plan always best for me?",
-      zh: "鏈€浣庝环鏂规涓€瀹氭渶閫傚悎鎴戝悧锛?",
+      zh: "最低价方案一定最适合我吗？",
     },
     answer: {
       en: "Not always. Price is only one factor. Availability, platform stability, account risk and your usage pattern should be considered together.",
-      zh: "涓嶄竴瀹氥€備环鏍煎彧鏄洜绱犱箣涓€锛岃繕闇€瑕佺患鍚堣€冭檻鍙敤鎬с€佸钩鍙扮ǔ瀹氭€с€佽处鍙烽闄╁拰浣犵殑浣跨敤棰戠巼銆?",
+      zh: "不一定。价格只是因素之一，还需要综合考虑可用性、平台稳定性、账号风险和你的使用频率。",
     },
   },
   {
     question: {
-      en: "Does AI Plan Map handle payments or accounts?",
-      zh: "AI Plan Map 浼氬鐞嗕粯娆炬垨璐﹀彿鍚楋紵",
+      en: "Does AI Price Guide handle payments or accounts?",
+      zh: "AI Price Guide 会处理付款或账号吗？",
     },
     answer: {
-      en: "No. AI Plan Map only provides price information, plan comparisons and external platform links. It does not sell accounts or process payments.",
-      zh: "涓嶄細銆侫I Plan Map 鍙彁渚涗环鏍间俊鎭€佹柟妗堟瘮杈冨拰澶栭儴骞冲彴閾炬帴锛屼笉閿€鍞处鍙凤紝涔熶笉澶勭悊浠樻銆?",
+      en: "No. AI Price Guide only provides price information, plan comparisons and external platform links. It does not sell accounts or process payments.",
+      zh: "不会。AI Price Guide 只提供价格信息、方案比较和外部平台链接，不销售账号，也不处理付款。",
     },
   },
 ];
@@ -247,4 +247,3 @@ function toFinderPlan(toolId: AiToolId, plan: RecommendationPlanMock): FinderPla
 function localize(value: string, dictionary: Record<string, LocalizedText>) {
   return dictionary[value] ?? { en: value, zh: value };
 }
-
