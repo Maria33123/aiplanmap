@@ -29,12 +29,12 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Guide not found | AI Price Guide",
+      title: "Guide not found | AI Plan Map",
     };
   }
 
   return {
-    title: `${post.title} | AI Price Guide`,
+    title: `${post.title} | AI Plan Map`,
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
@@ -47,8 +47,8 @@ export async function generateMetadata({
       type: "article",
       locale: "en_US",
       url: `/blog/${post.slug}`,
-      siteName: "AI Price Guide",
-      title: `${post.title} | AI Price Guide`,
+      siteName: "AI Plan Map",
+      title: `${post.title} | AI Plan Map`,
       description: post.excerpt,
     },
   };

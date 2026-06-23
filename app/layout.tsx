@@ -6,9 +6,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
-  title: "AI Price Guide | Compare AI Subscription Prices and Safer Options",
+  title: "AI Plan Map | Compare AI Tools, Plans and Pricing",
   description:
-    "Compare official prices, shared-platform options, availability notes, and risk considerations for ChatGPT, Claude, Gemini, and more.",
+    "Compare AI tools, subscription plans, pricing notes, and safer options for ChatGPT, Claude, Gemini, Midjourney, Cursor, Perplexity and more.",
   alternates: {
     canonical: "/",
     languages: {
@@ -20,10 +20,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "AI Price Guide",
-    title: "AI Price Guide | Compare AI Subscription Prices and Safer Options",
+    siteName: "AI Plan Map",
+    title: "AI Plan Map | Compare AI Tools, Plans and Pricing",
     description:
-      "Compare official prices, shared-platform options, availability notes, and risk considerations for ChatGPT, Claude, Gemini, and more.",
+      "Compare AI tools, subscription plans, pricing notes, and safer options for ChatGPT, Claude, Gemini, Midjourney, Cursor, Perplexity and more.",
+  },
+  twitter: {
+    card: "summary",
+    title: "AI Plan Map | Compare AI Tools, Plans and Pricing",
+    description:
+      "Compare AI tools, subscription plans, pricing notes, and safer options for ChatGPT, Claude, Gemini, Midjourney, Cursor, Perplexity and more.",
   },
   icons: {
     icon: [

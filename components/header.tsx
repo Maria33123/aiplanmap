@@ -15,7 +15,7 @@ export function Header() {
 
   return (
     <header className="page-shell relative flex min-h-[82px] flex-wrap items-center justify-between gap-y-3 py-4 md:flex-nowrap md:py-0">
-      <a href={homeHref} aria-label="AI Price Guide home">
+      <a href={homeHref} aria-label="AI Plan Map home">
         <BrandMark />
       </a>
 

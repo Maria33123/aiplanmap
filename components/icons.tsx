@@ -108,7 +108,7 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
         <span className="text-[13px] leading-none">✦</span>
       </span>
       <span className={compact ? "text-sm font-semibold" : "text-xl font-semibold tracking-[-0.03em]"}>
-        AI Price Guide
+        AI Plan Map
       </span>
     </div>
   );

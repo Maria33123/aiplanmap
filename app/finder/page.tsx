@@ -1,10 +1,10 @@
-import { Footer } from "@/components/footer";
+﻿import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LanguageProvider } from "@/components/language-provider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Price Guide - Finder moved to the homepage",
+  title: "AI Plan Map - Finder moved to the homepage",
   description: "The lowest-price finder is now available on the homepage.",
   robots: {
     index: false,
@@ -21,7 +21,7 @@ export default function FinderMergedPage() {
         <section className="page-shell flex flex-1 items-center justify-center py-16">
           <div className="surface soft-shadow w-full max-w-[680px] rounded-[28px] p-8 text-center md:p-12">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0071e3]">
-              AI Price Guide
+              AI Plan Map
             </p>
             <h1 className="mt-4 text-[32px] font-semibold tracking-[-0.045em] text-[#111111] md:text-[42px]">
               The Finder Has Moved to the Homepage
@@ -44,3 +44,4 @@ export default function FinderMergedPage() {
     </LanguageProvider>
   );
 }
+

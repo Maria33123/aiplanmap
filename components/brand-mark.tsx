@@ -18,7 +18,7 @@ export function BrandMark({ compact = false }: { compact?: boolean }) {
             : "text-xl font-semibold tracking-[-0.03em]"
         }
       >
-        AI Price Guide
+        AI Plan Map
       </span>
     </div>
   );

@@ -1,4 +1,4 @@
-param(
+﻿param(
     [switch]$NoOpen,
     [string]$Path = "/finder?lang=zh"
 )
@@ -62,7 +62,7 @@ function Start-WebsiteServer {
     $escapedLogFile = $logFile.Replace("'", "''")
     $command = "Set-Location -LiteralPath '$escapedProjectRoot'; npm run dev *> '$escapedLogFile'"
 
-    Set-Content -LiteralPath $logFile -Value "Starting AI Price Guide at $(Get-Date -Format o)`r`n" -Encoding UTF8
+    Set-Content -LiteralPath $logFile -Value "Starting AI Plan Map at $(Get-Date -Format o)`r`n" -Encoding UTF8
     Start-Process -FilePath "powershell.exe" -ArgumentList @(
         "-NoProfile",
         "-ExecutionPolicy",
@@ -85,7 +85,7 @@ if (-not $isReady) {
         Start-Sleep -Milliseconds 800
     }
     elseif ($owner) {
-        throw "Port $port is already used by another process. Close it first, then open AI Price Guide again."
+        throw "Port $port is already used by another process. Close it first, then open AI Plan Map again."
     }
 
     Start-WebsiteServer
@@ -109,3 +109,4 @@ if (-not $NoOpen) {
     $browserInfo.UseShellExecute = $true
     $null = [System.Diagnostics.Process]::Start($browserInfo)
 }
+

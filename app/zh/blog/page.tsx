@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 const categories = ["全部", "ChatGPT", "Claude", "共享平台", "避坑", "价格对比"];
 
 export const metadata: Metadata = {
-  title: "订阅指南 | AI Price Guide",
+  title: "订阅指南 | AI Plan Map",
   description:
     "了解 AI 订阅价格、共享平台风险、最低价策略和更安全的比较方式。",
   alternates: {
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_CN",
     url: "/zh/blog",
-    siteName: "AI Price Guide",
-    title: "订阅指南 | AI Price Guide",
+    siteName: "AI Plan Map",
+    title: "订阅指南 | AI Plan Map",
     description:
       "了解 AI 订阅价格、共享平台风险、最低价策略和更安全的比较方式。",
   },

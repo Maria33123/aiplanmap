@@ -1,4 +1,4 @@
-param(
+﻿param(
     [switch]$Elevated
 )
 
@@ -7,7 +7,7 @@ $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $powershellPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 $netshPath = "$env:SystemRoot\System32\netsh.exe"
-$launcherPath = Join-Path $projectRoot "open-ai-price-guide.vbs"
+$launcherPath = Join-Path $projectRoot "open-ai-plan-map.vbs"
 $resultPath = Join-Path $projectRoot "port-3000-repair-result.txt"
 
 function Show-Message {
@@ -17,7 +17,7 @@ function Show-Message {
     )
 
     $shell = New-Object -ComObject WScript.Shell
-    $null = $shell.Popup($Message, 0, "AI Price Guide", $Icon)
+    $null = $shell.Popup($Message, 0, "AI Plan Map", $Icon)
 }
 
 function Test-Administrator {
@@ -107,7 +107,7 @@ try {
     $log.Add("SUCCESS: Port 3000 is available.")
     $log | Set-Content -Path $resultPath -Encoding UTF8
 
-    Show-Message "Port 3000 is repaired. AI Price Guide will now open at http://localhost:3000/."
+    Show-Message "Port 3000 is repaired. AI Plan Map will now open at http://localhost:3000/."
 
     if (Test-Path $launcherPath) {
         Start-Process -FilePath "$env:SystemRoot\explorer.exe" -ArgumentList "`"$launcherPath`""
@@ -126,3 +126,4 @@ catch {
     Show-Message "Port 3000 repair failed. See port-3000-repair-result.txt for details." 16
     exit 1
 }
+

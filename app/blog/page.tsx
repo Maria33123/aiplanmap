@@ -1,11 +1,11 @@
-import { Footer } from "@/components/footer";
+﻿import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LanguageProvider } from "@/components/language-provider";
 import { blogArticles, blogCategories } from "@/lib/blog-data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Subscription Guides | AI Price Guide",
+  title: "Subscription Guides | AI Plan Map",
   description:
     "Learn about AI subscription pricing, shared-platform risks, lowest-price strategies, and safer ways to compare options.",
   alternates: {
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/blog",
-    siteName: "AI Price Guide",
-    title: "Subscription Guides | AI Price Guide",
+    siteName: "AI Plan Map",
+    title: "Subscription Guides | AI Plan Map",
     description:
       "Learn about AI subscription pricing, shared-platform risks, lowest-price strategies, and safer ways to compare options.",
   },
@@ -112,3 +112,4 @@ export default function BlogPage() {
     </LanguageProvider>
   );
 }
+

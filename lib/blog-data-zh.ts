@@ -35,7 +35,7 @@ const translations: Record<
       {
         heading: "如何评估风险",
         paragraphs: [
-          "应同时比较节省金额、访问稳定性、隐私和账号控制需求。AI Price Guide 不销售账号，也不处理付款。",
+          "应同时比较节省金额、访问稳定性、隐私和账号控制需求。AI Plan Map 不销售账号，也不处理付款。",
         ],
       },
     ],

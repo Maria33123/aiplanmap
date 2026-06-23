@@ -1,4 +1,4 @@
-export const blogCategories = [
+﻿export const blogCategories = [
   "All",
   "ChatGPT",
   "Claude",
@@ -49,14 +49,14 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Refunds and support",
         paragraphs: [
-          "Refund rules and support response times vary by platform. Read the platform’s own terms before making a decision, especially the rules for interrupted access, replacement access, and cancellations.",
+          "Refund rules and support response times vary by platform. Read the platform鈥檚 own terms before making a decision, especially the rules for interrupted access, replacement access, and cancellations.",
         ],
       },
       {
         heading: "A practical way to assess the risk",
         paragraphs: [
           "Compare the savings with the importance of stable access, privacy, and direct control. An official plan may suit users who need predictable access, while a lower-cost option may only suit noncritical or occasional use.",
-          "AI Price Guide does not sell accounts or process payments. Platform information is provided for comparison and may change over time.",
+          "AI Plan Map does not sell accounts or process payments. Platform information is provided for comparison and may change over time.",
         ],
       },
     ],
@@ -80,7 +80,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Official access",
         paragraphs: [
-          "The official plan offers direct account control, predictable billing, and access governed by the service’s own terms. It is usually the clearest option for users who depend on stable access or handle sensitive work.",
+          "The official plan offers direct account control, predictable billing, and access governed by the service鈥檚 own terms. It is usually the clearest option for users who depend on stable access or handle sensitive work.",
         ],
       },
       {
@@ -139,7 +139,7 @@ export const blogPosts: BlogPost[] = [
     title: "Is there a cheaper option for Claude Pro?",
     category: "Claude",
     excerpt:
-      "Review Claude Pro’s official pricing and possible lower-cost subscription strategies.",
+      "Review Claude Pro鈥檚 official pricing and possible lower-cost subscription strategies.",
     readingTime: "5 min read",
     publishedAt: "June 16, 2026",
     content: [
@@ -234,7 +234,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Decide whether you need one or both",
         paragraphs: [
-          "Many users can choose one primary subscription and use the other service’s free access when needed. Keeping both continuously makes more sense only when each supports a distinct, recurring workflow.",
+          "Many users can choose one primary subscription and use the other service鈥檚 free access when needed. Keeping both continuously makes more sense only when each supports a distinct, recurring workflow.",
         ],
       },
     ],
@@ -330,3 +330,4 @@ export function getRelatedPosts(post: BlogPost, limit = 3) {
 
   return [...sameCategory, ...otherPosts].slice(0, limit);
 }
+

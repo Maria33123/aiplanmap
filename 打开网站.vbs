@@ -1,4 +1,4 @@
-Option Explicit
+﻿Option Explicit
 
 Dim shell, fileSystem, projectRoot, powershell, command, exitCode
 
@@ -17,9 +17,10 @@ End If
 exitCode = shell.Run(command, 0, True)
 
 If exitCode <> 0 Then
-    MsgBox "AI Price Guide could not be started.", 16, "AI Price Guide"
+    MsgBox "AI Plan Map could not be started.", 16, "AI Plan Map"
 End If
 
 Function Quote(value)
     Quote = Chr(34) & value & Chr(34)
 End Function
+

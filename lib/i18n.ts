@@ -124,7 +124,7 @@ export const translations: Record<Locale, Translation> = {
         { label: "Privacy", href: "#" },
         { label: "Platform Notice", href: "/platform-notice" },
       ],
-      copyright: "© 2026 AI Price Guide. All rights reserved.",
+      copyright: "© 2026 AI Plan Map. All rights reserved.",
     },
   },
   zh: {
@@ -202,7 +202,7 @@ export const translations: Record<Locale, Translation> = {
         { label: "隐私政策", href: "#" },
         { label: "平台说明", href: "/zh/platform-notice" },
       ],
-      copyright: "© 2026 AI Price Guide。保留所有权利。",
+      copyright: "© 2026 AI Plan Map。保留所有权利。",
     },
   },
 };

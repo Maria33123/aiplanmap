@@ -1,4 +1,4 @@
-const localSiteUrl = "http://localhost:3000";
+const productionSiteUrl = "https://www.aiplanmap.com";
 
 function normalizeSiteUrl(value: string) {
   const normalizedValue = /^https?:\/\//i.test(value)
@@ -13,7 +13,7 @@ export function getSiteUrl() {
     process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
     process.env.VERCEL_URL?.trim();
 
-  return normalizeSiteUrl(configuredSiteUrl || vercelSiteUrl || localSiteUrl);
+  return normalizeSiteUrl(configuredSiteUrl || vercelSiteUrl || productionSiteUrl);
 }
 
 export function getAbsoluteUrl(pathname: string) {

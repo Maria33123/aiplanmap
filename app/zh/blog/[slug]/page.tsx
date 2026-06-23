@@ -26,11 +26,11 @@ export async function generateMetadata({
   const post = getChineseBlogPost(slug);
 
   if (!post) {
-    return { title: "文章未找到 | AI Price Guide" };
+    return { title: "文章未找到 | AI Plan Map" };
   }
 
   return {
-    title: `${post.title} | AI Price Guide`,
+    title: `${post.title} | AI Plan Map`,
     description: post.excerpt,
     alternates: {
       canonical: `/zh/blog/${post.slug}`,
@@ -43,8 +43,8 @@ export async function generateMetadata({
       type: "article",
       locale: "zh_CN",
       url: `/zh/blog/${post.slug}`,
-      siteName: "AI Price Guide",
-      title: `${post.title} | AI Price Guide`,
+      siteName: "AI Plan Map",
+      title: `${post.title} | AI Plan Map`,
       description: post.excerpt,
     },
   };

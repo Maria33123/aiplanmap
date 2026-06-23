@@ -38,7 +38,7 @@ const homeFinderCopy = {
     lowestRisk: "Lowest risk",
     riskTitle: "Before you choose",
     riskDescription:
-      "Shared subscription platforms may involve account availability, refunds, access stability, and platform policy changes. AI Price Guide does not sell accounts or process payments. Please review each platform’s own terms before making a decision.",
+      "Shared subscription platforms may involve account availability, refunds, access stability, and platform policy changes. AI Plan Map does not sell accounts or process payments. Please review each platform’s own terms before making a decision.",
   },
   zh: {
     title: "查找你的最低价方案",
@@ -66,7 +66,7 @@ const homeFinderCopy = {
     lowestRisk: "风险最低",
     riskTitle: "选择前请注意",
     riskDescription:
-      "价格不是唯一因素。共享订阅平台可能涉及账号可用性、退款、访问稳定性和平台政策变化等风险。AI Price Guide 不销售账号，也不处理付款。请选择前查看每个平台自己的服务条款、价格和退款规则。",
+      "价格不是唯一因素。共享订阅平台可能涉及账号可用性、退款、访问稳定性和平台政策变化等风险。AI Plan Map 不销售账号，也不处理付款。请选择前查看每个平台自己的服务条款、价格和退款规则。",
   },
 } satisfies Record<Locale, Record<string, string>>;
 

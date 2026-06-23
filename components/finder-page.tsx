@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -18,15 +18,15 @@ import { Icon } from "./icons";
 
 const finderMeta = {
   en: {
-    title: "AI Price Guide - Finder",
+    title: "AI Plan Map - Finder",
     description:
       "Choose AI tools and compare official plans, shared-platform prices, estimated savings and risk notes.",
   },
   zh: {
-    title: "AI Price Guide - 方案查找",
+    title: "AI Plan Map - 方案查找",
     description: "选择 AI 工具和偏好，查看当前可用的最低价策略。",
   },
-};
+} satisfies Record<Locale, Record<string, string>>;
 
 const finderCopy = {
   en: {
@@ -53,7 +53,7 @@ const finderCopy = {
       "Choose tools, confirm your preference, then click the button to show platform options.",
     riskTitle: "Price is not the only factor.",
     riskDescription:
-      "Shared subscription platforms may involve account availability, refund, access stability and platform policy risks. Review each platform before deciding.",
+      "Shared subscription platforms may involve account availability, refunds, access stability and platform policy risks. Review each platform before deciding.",
     recommendationsTitle: "Recommended platforms",
     recommendationsDescription:
       "Sorted by your selection and preference. Review price, availability and risk notes together.",
@@ -73,11 +73,11 @@ const finderCopy = {
     pageTitle: "方案查找",
     pageDescription: "选择 AI 工具，查看当前可用的最低价策略。",
     updatedBadge: "价格数据每日更新",
-    chooseTitle: "你想为哪些 AI 工具找最低价？",
+    chooseTitle: "你想为哪些 AI 工具找更低价格？",
     officialPrice: "官方价格",
     preferenceTitle: "查找偏好",
     searchButton: "查看推荐平台",
-    disclaimer: "选择前请查看每个平台说明。",
+    disclaimer: "选择前请先查看每个平台说明。",
     summaryTitle: "结果摘要",
     summarySingleSuffix: "最低价策略",
     summaryMultiPrefix: "已选",
@@ -87,20 +87,22 @@ const finderCopy = {
     monthlySaving: "预计每月节省",
     yearlySaving: "预计每年节省",
     tools: "个工具",
-    emptyResultsTitle: "推荐平台将在这里显示",
-    emptyResultsDescription: "选择工具和偏好后，点击按钮即可查看平台列表。",
+    emptyResultsTitle: "推荐平台将会显示在这里",
+    emptyResultsDescription:
+      "选择工具和偏好后，点击按钮即可查看平台列表。",
     riskTitle: "价格不是唯一因素。",
     riskDescription:
       "共享订阅平台可能涉及账号可用性、退款、访问稳定性和平台政策变化等风险。请在选择前查看每个平台说明。",
     recommendationsTitle: "推荐平台",
-    recommendationsDescription: "根据你的选择和偏好排序。请同时查看价格、可用性和风险提示。",
+    recommendationsDescription:
+      "根据你的选择和偏好排序。请同时查看价格、可用性和风险提示。",
     officialPriceLine: "官方价格",
     lowestPlanLine: "最低平台",
     savingLine: "预计节省",
     price: "价格",
     availability: "可用性",
     riskNote: "风险提示",
-    bestFor: "适合",
+    bestFor: "适合人群",
     platformCta: "查看平台方案",
     officialCta: "查看官方方案",
     platformNotesTitle: "平台说明",
@@ -247,8 +249,7 @@ function ToolPicker({
             >
               {selected && (
                 <span className="absolute right-3 top-3 grid h-4 w-4 place-items-center rounded-full bg-[#0071e3] text-[10px] font-bold text-white">
-                  ✓
-                </span>
+                  鉁?                </span>
               )}
               <div className="flex items-center gap-3 pr-5">
                 <span className={`grid h-8 w-8 place-items-center rounded-xl text-xs font-bold ${tool.accentClass}`}>
@@ -656,3 +657,4 @@ function formatYearly(amount: number, locale: Locale) {
 function formatAmount(amount: number) {
   return Number.isInteger(amount) ? amount.toString() : amount.toFixed(2);
 }
+
