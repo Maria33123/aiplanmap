@@ -75,7 +75,7 @@ export function HomeFinderSection() {
   const copy = homeFinderCopy[locale];
   const [selectedToolId, setSelectedToolId] =
     useState<FinderTool["id"]>("chatgpt-plus");
-  const [preferenceId, setPreferenceId] = useState<FinderPreferenceId>("balanced");
+  const [preferenceId, setPreferenceId] = useState<FinderPreferenceId>("lowest");
 
   const selectedTool = useMemo(
     () => finderTools.find((tool) => tool.id === selectedToolId) ?? finderTools[0],
