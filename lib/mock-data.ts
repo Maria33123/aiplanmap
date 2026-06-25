@@ -6,7 +6,8 @@ export type AiToolId =
   | "gemini-advanced"
   | "perplexity-pro"
   | "midjourney"
-  | "cursor-pro";
+  | "cursor-pro"
+  | "grok";
 
 export type ProviderId = "official" | "gamsgo" | "spliiit" | "sharesub";
 
@@ -56,9 +57,9 @@ export const aiTools: AiToolMock[] = [
     shortName: "ChatGPT",
     officialPrice: 20,
     officialPriceLabel: "$20/mo",
-    bestPrice: 7.2,
-    bestPriceLabel: "from $7.20/mo",
-    savingPercent: 64,
+    bestPrice: 4.77,
+    bestPriceLabel: "from $4.77/mo",
+    savingPercent: 76,
     iconName: "chatgpt",
     category: "writing",
     mark: "●",
@@ -84,9 +85,9 @@ export const aiTools: AiToolMock[] = [
     shortName: "Gemini",
     officialPrice: 19.99,
     officialPriceLabel: "$19.99/mo",
-    bestPrice: 6,
-    bestPriceLabel: "from $6.00/mo",
-    savingPercent: 70,
+    bestPrice: 3.55,
+    bestPriceLabel: "from $3.55/mo",
+    savingPercent: 82,
     iconName: "gemini",
     category: "writing",
     mark: "✦",
@@ -133,6 +134,20 @@ export const aiTools: AiToolMock[] = [
     category: "coding",
     mark: "◆",
     accentClass: "bg-[#161616] text-white",
+  },
+  {
+    id: "grok",
+    name: "Grok",
+    shortName: "Grok",
+    officialPrice: 30,
+    officialPriceLabel: "$30/mo",
+    bestPrice: 9.67,
+    bestPriceLabel: "from $9.67/mo",
+    savingPercent: 68,
+    iconName: "grok",
+    category: "search",
+    mark: "𝕏",
+    accentClass: "bg-[#111111] text-white",
   },
 ];
 
@@ -184,34 +199,60 @@ export const recommendationPlansByToolId: Record<
   RecommendationPlanMock[]
 > = {
   "chatgpt-plus": [
-    platformPlan("gamsgo", "$7.20/mo", 7.2, 64, "High", "Moderate", "Lowest-price priority"),
+    platformPlan("gamsgo", "$4.77/mo", 4.77, 76, "High", "Moderate", "Lowest-price priority"),
     platformPlan("spliiit", "$8.50/mo", 8.5, 58, "Medium", "Moderate", "Sharing transparency"),
     officialPlan(20, "$20/mo"),
   ],
+
   "claude-pro": [
     platformPlan("gamsgo", "$6.50/mo", 6.5, 68, "High", "Moderate", "Lowest-price priority"),
     platformPlan("spliiit", "$8.20/mo", 8.2, 59, "Medium", "Moderate", "Sharing transparency"),
     officialPlan(20, "$20/mo"),
   ],
+
   "gemini-advanced": [
-    platformPlan("gamsgo", "$6.00/mo", 6, 70, "High", "Moderate", "Lowest-price priority"),
+    platformPlan(
+      "gamsgo",
+      "$3.55/mo",
+      3.55,
+      82,
+      "High",
+      "Moderate",
+      "Lowest-price priority, minimum 3 months",
+    ),
     platformPlan("sharesub", "$7.40/mo", 7.4, 63, "Medium", "Moderate", "Flexible shared plans"),
     officialPlan(19.99, "$19.99/mo"),
   ],
+
   "perplexity-pro": [
     platformPlan("gamsgo", "$6.88/mo", 6.88, 66, "High", "Moderate", "Lowest-price priority"),
     platformPlan("spliiit", "$8.00/mo", 8, 60, "Medium", "Moderate", "Sharing transparency"),
     officialPlan(20, "$20/mo"),
   ],
+
   midjourney: [
     platformPlan("gamsgo", "$9.99/mo", 9.99, 67, "High", "Moderate", "Lowest-price priority"),
     platformPlan("sharesub", "$12.50/mo", 12.5, 58, "Medium", "Moderate", "Flexible shared plans"),
     officialPlan(30, "$30/mo"),
   ],
+
   "cursor-pro": [
     platformPlan("gamsgo", "$6.90/mo", 6.9, 65, "High", "Moderate", "Lowest-price priority"),
     platformPlan("spliiit", "$8.25/mo", 8.25, 59, "Medium", "Moderate", "Sharing transparency"),
     officialPlan(20, "$20/mo"),
+  ],
+
+  grok: [
+    platformPlan(
+      "gamsgo",
+      "$9.67/mo",
+      9.67,
+      68,
+      "High",
+      "Moderate",
+      "Exclusive plan, minimum 3 months",
+    ),
+    officialPlan(30, "$30/mo"),
   ],
 };
 
