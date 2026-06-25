@@ -11,7 +11,7 @@ import type { Locale } from "./i18n";
 
 export type LocalizedText = Record<Locale, string>;
 
-export type FinderPreferenceId = "balanced" | "lowest" | "safer";
+export type FinderPreferenceId = "lowest" | "safer";
 
 export type FinderPlan = {
   id: string;
@@ -50,17 +50,6 @@ export const finderPreferences: Array<{
   title: LocalizedText;
   description: LocalizedText;
 }> = [
-  {
-    id: "balanced",
-    title: {
-      en: "Balanced recommendation",
-      zh: "综合推荐",
-    },
-    description: {
-      en: "Balance price, availability and risk.",
-      zh: "平衡价格、可用性和风险",
-    },
-  },
   {
     id: "lowest",
     title: {
