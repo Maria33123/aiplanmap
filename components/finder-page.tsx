@@ -124,7 +124,7 @@ function FinderContent() {
   const [selectedToolIds, setSelectedToolIds] = useState<Array<FinderTool["id"]>>([
     "chatgpt-plus",
   ]);
-  const [preferenceId, setPreferenceId] = useState<FinderPreferenceId>("balanced");
+  const [preferenceId, setPreferenceId] = useState<FinderPreferenceId>("lowest");
 
   const selectedTools = useMemo(
     () => finderTools.filter((tool) => selectedToolIds.includes(tool.id)),
