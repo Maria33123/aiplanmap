@@ -64,8 +64,8 @@ export const aiTools: AiToolMock[] = [
   },
   {
     id: "gemini-advanced",
-    name: "Gemini Advanced",
-    shortName: "Gemini",
+    name: "Gemini Pro",
+    shortName: "Gemini Pro",
     officialPrice: 19.99,
     officialPriceLabel: "$19.99/mo",
     bestPrice: 3.55,
