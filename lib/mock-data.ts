@@ -78,8 +78,8 @@ export const aiTools: AiToolMock[] = [
   },
   {
     id: "grok",
-    name: "Grok",
-    shortName: "Grok",
+    name: "Super Grok",
+    shortName: "Super Grok",
     officialPrice: 30,
     officialPriceLabel: "$30/mo",
     bestPrice: 9.67,
