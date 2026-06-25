@@ -101,6 +101,14 @@ const bestForCopy: Record<string, LocalizedText> = {
     en: "Lowest-price priority",
     zh: "最低价优先",
   },
+  "Lowest-price priority, minimum 3 months": {
+    en: "Lowest-price priority, minimum 3 months",
+    zh: "最低价优先（最少 3 个月）",
+  },
+  "Exclusive plan, minimum 3 months": {
+    en: "Exclusive plan, minimum 3 months",
+    zh: "独享方案（最少 3 个月）",
+  },
   "Sharing transparency": {
     en: "Sharing transparency",
     zh: "共享透明度优先",
