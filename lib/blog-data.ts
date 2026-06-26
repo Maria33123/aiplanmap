@@ -156,42 +156,6 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "gamsgo-vs-spliiit",
-    title: "GamsGo vs Spliiit: which is better?",
-    category: "Shared Platforms",
-    excerpt:
-      "Compare both platforms by price, availability, transparency, and risk level.",
-    readingTime: "6 min read",
-    publishedAt: "June 17, 2026",
-    content: [
-      {
-        heading: "Why the platforms are difficult to compare",
-        paragraphs: [
-          "GamsGo and Spliiit may present different products, access methods, durations, and service rules. A direct price comparison is only useful when the underlying access is similar.",
-          "Check the exact product page and terms rather than assuming every listing works in the same way.",
-        ],
-      },
-      {
-        heading: "Price and availability",
-        paragraphs: [
-          "Listed prices may vary with stock, region, subscription length, and platform updates. Availability can also change quickly, so a snapshot should not be treated as a permanent offer.",
-        ],
-      },
-      {
-        heading: "Transparency and account control",
-        paragraphs: [
-          "Review how each platform explains account ownership, access delivery, renewal, cancellation, and replacement access. Clear rules make it easier to understand what you are receiving and what happens if access stops.",
-        ],
-      },
-      {
-        heading: "Choosing between them",
-        paragraphs: [
-          "Use the same checklist for both: current price, access method, refund rules, support process, account control, and service limitations. If any important condition is unclear, the lower listed price may not represent better value.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "is-there-a-cheaper-option-for-claude-pro",
     title: "Is there a cheaper option for Claude Pro?",
     category: "Claude",
