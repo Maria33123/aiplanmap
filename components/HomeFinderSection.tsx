@@ -77,9 +77,9 @@ const imageLogoMap: Record<string, string> = {
 };
 
 const imageLogoSizeMap: Record<string, string> = {
-  chatgpt: "h-11 w-11",
-  grok: "h-11 w-11",
-  claude: "h-10 w-10",
+  chatgpt: "h-8 w-8",
+  grok: "h-8 w-8",
+  claude: "h-8 w-8",
 };
 
 export function HomeFinderSection() {
@@ -162,7 +162,7 @@ function ToolPicker({
               onClick={() => onSelectTool(tool.id)}
               type="button"
               className={[
-                "relative flex items-center gap-4 rounded-2xl border p-4 text-left transition",
+                "relative flex items-center gap-3 rounded-2xl border p-3 text-left transition",
                 selected
                   ? "border-blue-500 bg-blue-50"
                   : "border-slate-200 bg-white hover:border-blue-300",
@@ -177,8 +177,10 @@ function ToolPicker({
               <ToolLogo tool={tool} />
 
               <div>
-                <h4 className="font-bold text-slate-950">{tool.name}</h4>
-                <p className="mt-1 text-sm text-slate-500">
+                <h4 className="text-sm font-bold text-slate-950 sm:text-base">
+                  {tool.name}
+                </h4>
+                <p className="mt-1 text-xs text-slate-500 sm:text-sm">
                   {copy.officialPrice}{" "}
                   {formatMonthly(tool.officialPriceMonthlyUsd, locale)}
                 </p>
@@ -194,17 +196,17 @@ function ToolPicker({
 function ToolLogo({ tool }: { tool: FinderTool }) {
   if (tool.iconName === "gemini") {
     return (
-      <span className="flex h-14 w-14 shrink-0 items-center justify-center">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center">
         <GeminiLogo />
       </span>
     );
   }
 
   const logoSrc = imageLogoMap[tool.iconName];
-  const logoClass = imageLogoSizeMap[tool.iconName] ?? "h-11 w-11";
+  const logoClass = imageLogoSizeMap[tool.iconName] ?? "h-8 w-8";
 
   return (
-    <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-visible">
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-visible">
       {logoSrc ? (
         <img
           src={logoSrc}
@@ -212,7 +214,7 @@ function ToolLogo({ tool }: { tool: FinderTool }) {
           className={`${logoClass} object-contain`}
         />
       ) : (
-        <span className="text-sm font-bold text-slate-700">{tool.mark}</span>
+        <span className="text-xs font-bold text-slate-700">{tool.mark}</span>
       )}
     </span>
   );
@@ -222,7 +224,7 @@ function GeminiLogo() {
   return (
     <svg
       viewBox="0 0 64 64"
-      className="h-10 w-10"
+      className="h-8 w-8"
       aria-hidden="true"
       focusable="false"
     >
