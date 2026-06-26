@@ -6,12 +6,13 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="page-shell flex justify-center pb-2 pt-9 text-center md:pb-3 md:pt-12">
-      <div className="mx-auto max-w-[860px]">
-        <h1 className="text-[40px] font-semibold leading-[1.08] tracking-[-0.045em] sm:text-5xl md:text-[56px]">
+    <section className="page-shell flex justify-center pb-2 pt-3 text-center md:pb-3 md:pt-4">
+      <div className="mx-auto max-w-[820px]">
+        <h1 className="text-[32px] font-semibold leading-[1.12] tracking-[-0.04em] sm:text-[38px] md:text-[44px]">
           {t.hero.title}
         </h1>
-        <p className="mx-auto mt-5 max-w-[720px] text-sm leading-7 text-[#6b7280] md:text-base">
+
+        <p className="mx-auto mt-3 max-w-[680px] text-sm leading-6 text-[#6b7280] md:text-[15px]">
           {t.hero.description}
         </p>
       </div>
