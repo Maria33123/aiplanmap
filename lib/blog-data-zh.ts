@@ -4,10 +4,67 @@ export type ChineseBlogPost = Omit<BlogPost, "category"> & {
   category: string;
 };
 
-const translations: Record<
-  string,
-  Pick<ChineseBlogPost, "title" | "category" | "excerpt" | "content">
-> = {
+type ChineseBlogTranslation = Pick<
+  ChineseBlogPost,
+  "title" | "category" | "excerpt" | "content"
+>;
+
+const translations: Record<string, ChineseBlogTranslation> = {
+  "why-ai-memberships-are-so-cheap": {
+    title: "为什么 AI 会员会出现低价方案？5 种来源与购买风险解析",
+    category: "避坑",
+    excerpt:
+      "同样是会员账号，为什么价格差距能达到50%甚至80%？这些低价账号到底是怎么来的？安全吗？",
+    content: [
+      {
+        heading: "为什么 AI 会员会出现低价方案？",
+        paragraphs: [
+          "同样是会员账号，为什么价格差距能达到50% 甚至80%？这些低价账号到底是怎么来的？安全吗？本文带你了解目前市场上最常见的5种低价AI会员来源，以及购买前必须了解的风险。",
+        ],
+      },
+      {
+        heading: "第一类：盗刷信用卡",
+        paragraphs: [
+          "最便宜的往往是来自这里。流程：盗刷信用卡、开通会员、出售账号。价格在2-3美元甚至更低。因为成本接近0元，但是随着各大AI平台的打击，这种方法已经逐渐被官方风控。不过依旧存在，他们依旧会使用例如养号、使用代理住宅 ip，信用卡进行地区以及卡开头数字分类来躲避风控。市场上有大量的号商在进行售卖。",
+        ],
+      },
+      {
+        heading: "第二类：地区套利",
+        paragraphs: [
+          "同一个产品在不同的国家官方价格是不一样的，例如Chatgpt：最便宜的地区16 美元左右。最贵的地区在26美元左右；所以就导致有人利用当地信用卡、虚拟卡，代理网络完成注册后转卖。",
+        ],
+      },
+      {
+        heading: "第三类：企业团队版分销",
+        paragraphs: [
+          "例如：ChatGPT Team 官方价格：2人起购，约 30 美元/月/人。如果有人购买 100 个席位或者 200 个席位；再拆分出售 10 美元、15 美元。理论上仍有利润用户获得独立账号独立密码，本质是企业管理员给你开了一个成员席位。",
+          "用户获得的通常不是共享账号，而是独立邮箱、独立密码、独立的聊天记录；从使用体验来看，与官方订阅差异不大。但是还需要注意企业管理员通常拥有一定管理权限。如果团队被解散、席位被删除或者平台调整政策，用户可能失去访问资格。",
+        ],
+      },
+      {
+        heading: "第四类：教育邮箱薅羊毛",
+        paragraphs: [
+          "利用学校邮箱、教育优惠获取免费额度、折扣额度。以前：GitHub Student、Notion AI、Claude、Gemini 都曾被大量利用过。但现在越来越难。",
+        ],
+      },
+      {
+        heading: "第五类：家庭组共享",
+        paragraphs: [
+          "像GamsGo、FamilyPro 这种平台最早他们是做 Netflix、YouTube Premium、Spotify 等家庭共享业务；后来开始尝试 AI 订阅服务，用户通过共享账号、浏览器授权或团队成员形式获得访问权限，从而降低每个人的使用成本。",
+        ],
+      },
+      {
+        heading: "总结",
+        paragraphs: [
+          "所以在购买上述内容的账号时一定要注意以下风险：",
+          "1、隐私风险： 如果是共享账号会导致个人对话被其他合租者看到。“隐私完全暴露”或聊天记录对所有共享者可见。",
+          "2、账号额度问题：如果是共享账户账号会有其他人也在使用，所以避免不了的是使用额度会超过限制。",
+          "3、售后问题： 一定要在购买帐号前就能找到对应的售后服务人员问相关账号的质保期和售后范围。有些平台或者网站当你买完账号后会发现联系不到任何人来帮你解决账号遇到的问题。",
+        ],
+      },
+    ],
+  },
+
   "is-shared-ai-subscription-safe": {
     title: "共享 AI 订阅安全吗？",
     category: "避坑",
@@ -40,6 +97,7 @@ const translations: Record<
       },
     ],
   },
+
   "cheapest-way-to-use-chatgpt-plus": {
     title: "使用 ChatGPT Plus 最便宜的方式",
     category: "ChatGPT",
@@ -71,6 +129,7 @@ const translations: Record<
       },
     ],
   },
+
   "gamsgo-vs-spliiit": {
     title: "GamsGo 和 Spliiit 哪个更好？",
     category: "共享平台",
@@ -102,6 +161,7 @@ const translations: Record<
       },
     ],
   },
+
   "is-there-a-cheaper-option-for-claude-pro": {
     title: "Claude Pro 有没有更便宜的方案？",
     category: "Claude",
@@ -133,6 +193,7 @@ const translations: Record<
       },
     ],
   },
+
   "how-to-stop-overpaying-for-ai-tools": {
     title: "如何避免为 AI 工具多花钱？",
     category: "避坑",
@@ -154,12 +215,11 @@ const translations: Record<
       },
       {
         heading: "同时考虑成本和风险",
-        paragraphs: [
-          "降低费用时也应考虑隐私、稳定性和账号控制需求。",
-        ],
+        paragraphs: ["降低费用时也应考虑隐私、稳定性和账号控制需求。"],
       },
     ],
   },
+
   "chatgpt-vs-claude-worth-subscribing": {
     title: "ChatGPT vs Claude：哪个更值得订阅？",
     category: "价格对比",
@@ -187,6 +247,7 @@ const translations: Record<
       },
     ],
   },
+
   "is-perplexity-pro-worth-it": {
     title: "Perplexity Pro 值得买吗？",
     category: "价格对比",
@@ -194,7 +255,9 @@ const translations: Record<
     content: [
       {
         heading: "AI 搜索订阅适合什么需求",
-        paragraphs: ["这类工具适合经常需要来源概览、资料发现和重复研究的用户。"],
+        paragraphs: [
+          "这类工具适合经常需要来源概览、资料发现和重复研究的用户。",
+        ],
       },
       {
         heading: "评估研究质量",
@@ -210,6 +273,7 @@ const translations: Record<
       },
     ],
   },
+
   "how-to-choose-an-ai-subscription-stack": {
     title: "AI 工具订阅组合怎么选？",
     category: "价格对比",
@@ -237,11 +301,16 @@ const translations: Record<
   },
 };
 
-export const chineseBlogPosts: ChineseBlogPost[] = blogPosts.map((post) => ({
-  ...post,
-  ...translations[post.slug],
-  readingTime: post.readingTime.replace("min read", "分钟阅读"),
-}));
+export const chineseBlogPosts: ChineseBlogPost[] = blogPosts.map((post) => {
+  const translation = translations[post.slug];
+
+  return {
+    ...post,
+    ...(translation ?? {}),
+    category: translation?.category ?? post.category,
+    readingTime: post.readingTime.replace("min read", "分钟阅读"),
+  };
+});
 
 export function getChineseBlogPost(slug: string) {
   return chineseBlogPosts.find((post) => post.slug === slug);
@@ -252,9 +321,11 @@ export function getRelatedChinesePosts(post: ChineseBlogPost, limit = 3) {
     (candidate) =>
       candidate.slug !== post.slug && candidate.category === post.category,
   );
+
   const others = chineseBlogPosts.filter(
     (candidate) =>
       candidate.slug !== post.slug && candidate.category !== post.category,
   );
+
   return [...sameCategory, ...others].slice(0, limit);
 }
