@@ -77,6 +77,13 @@ const toolLogoMap: Record<string, string> = {
   claude: "/ai-icons/Claude.png",
 };
 
+const toolLogoSizeMap: Record<string, string> = {
+  chatgpt: "h-12 w-12",
+  gemini: "h-12 w-12",
+  grok: "h-12 w-12",
+  claude: "h-14 w-14 scale-[1.7]",
+};
+
 export function HomeFinderSection() {
   const { locale } = useLanguage();
   const copy = homeFinderCopy[locale];
@@ -188,14 +195,15 @@ function ToolPicker({
 
 function ToolLogo({ tool }: { tool: FinderTool }) {
   const logoSrc = toolLogoMap[tool.iconName];
+  const logoClass = toolLogoSizeMap[tool.iconName] ?? "h-12 w-12";
 
   return (
-    <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+    <span className="flex h-12 w-12 shrink-0 items-center justify-center">
       {logoSrc ? (
         <img
           src={logoSrc}
           alt={`${tool.name} logo`}
-          className="h-9 w-9 object-contain"
+          className={`${logoClass} object-contain`}
         />
       ) : (
         <span className="text-sm font-bold text-slate-700">{tool.mark}</span>
