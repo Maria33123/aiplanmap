@@ -73,6 +73,13 @@ const homeFinderCopy = {
 const imageLogoMap: Record<string, string> = {
   chatgpt: "/ai-icons/ChatGPT.png",
   grok: "/ai-icons/Grok.png",
+  claude: "/ai-icons/Claude.png",
+};
+
+const imageLogoSizeMap: Record<string, string> = {
+  chatgpt: "h-11 w-11",
+  grok: "h-11 w-11",
+  claude: "h-10 w-10",
 };
 
 export function HomeFinderSection() {
@@ -193,23 +200,16 @@ function ToolLogo({ tool }: { tool: FinderTool }) {
     );
   }
 
-  if (tool.iconName === "claude") {
-    return (
-      <span className="flex h-14 w-14 shrink-0 items-center justify-center">
-        <ClaudeLogo />
-      </span>
-    );
-  }
-
   const logoSrc = imageLogoMap[tool.iconName];
+  const logoClass = imageLogoSizeMap[tool.iconName] ?? "h-11 w-11";
 
   return (
-    <span className="flex h-14 w-14 shrink-0 items-center justify-center">
+    <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-visible">
       {logoSrc ? (
         <img
           src={logoSrc}
           alt={`${tool.name} logo`}
-          className="h-11 w-11 object-contain"
+          className={`${logoClass} object-contain`}
         />
       ) : (
         <span className="text-sm font-bold text-slate-700">{tool.mark}</span>
@@ -222,7 +222,7 @@ function GeminiLogo() {
   return (
     <svg
       viewBox="0 0 64 64"
-      className="h-11 w-11"
+      className="h-10 w-10"
       aria-hidden="true"
       focusable="false"
     >
@@ -230,33 +230,6 @@ function GeminiLogo() {
         d="M32 4C36.2 20.1 43.9 27.8 60 32C43.9 36.2 36.2 43.9 32 60C27.8 43.9 20.1 36.2 4 32C20.1 27.8 27.8 20.1 32 4Z"
         fill="#5B8CFF"
       />
-    </svg>
-  );
-}
-
-function ClaudeLogo() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      className="h-10 w-10"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <g
-        stroke="#FF6A3D"
-        strokeWidth="5"
-        strokeLinecap="round"
-        fill="none"
-      >
-        <line x1="32" y1="8" x2="32" y2="56" />
-        <line x1="8" y1="32" x2="56" y2="32" />
-        <line x1="15" y1="15" x2="49" y2="49" />
-        <line x1="49" y1="15" x2="15" y2="49" />
-        <line x1="22" y1="10" x2="42" y2="54" />
-        <line x1="42" y1="10" x2="22" y2="54" />
-        <line x1="10" y1="22" x2="54" y2="42" />
-        <line x1="54" y1="22" x2="10" y2="42" />
-      </g>
     </svg>
   );
 }
