@@ -9,13 +9,13 @@ import {
 } from "@/lib/finder-data";
 import type { Locale } from "@/lib/i18n";
 import { useMemo, useState } from "react";
-import { Icon } from "./icons";
 import { useLanguage } from "./language-provider";
 
 const homeFinderCopy = {
   en: {
     title: "Find your lowest-price plan",
-    description: "Choose AI tools to see currently available lowest-price strategies.",
+    description:
+      "Choose AI tools to see currently available lowest-price strategies.",
     chooseTitle: "AI tools",
     officialPrice: "Official",
     preferenceTitle: "Finder preference",
@@ -70,39 +70,47 @@ const homeFinderCopy = {
   },
 } satisfies Record<Locale, Record<string, string>>;
 
+const toolLogoMap: Record<string, string> = {
+  chatgpt: "/ai-icons/ChatGPT.png",
+  gemini: "/ai-icons/Gemini.png",
+  grok: "/ai-icons/Grok.png",
+  claude: "/ai-icons/Claude.png",
+};
+
 export function HomeFinderSection() {
   const { locale } = useLanguage();
   const copy = homeFinderCopy[locale];
+
   const [selectedToolId, setSelectedToolId] =
     useState<FinderTool["id"]>("chatgpt-plus");
-  const [preferenceId, setPreferenceId] = useState<FinderPreferenceId>("lowest");
+
+  const [preferenceId, setPreferenceId] =
+    useState<FinderPreferenceId>("lowest");
 
   const selectedTool = useMemo(
     () => finderTools.find((tool) => tool.id === selectedToolId) ?? finderTools[0],
     [selectedToolId],
   );
+
   const summary = useMemo(() => getSummary(selectedTool), [selectedTool]);
 
-  const selectTool = (toolId: FinderTool["id"]) => {
-    setSelectedToolId(toolId);
-  };
-
   return (
-    <section className="page-shell mt-5 scroll-mt-8 md:mt-6" id="finder">
-      <div className="grid gap-5 lg:grid-cols-[0.62fr_0.38fr] lg:items-start">
-        <section className="surface rounded-[24px] p-4 md:p-5">
+    <section className="mx-auto w-full max-w-6xl px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+      <div className="grid gap-6 lg:grid-cols-[1.65fr_1fr]">
+        <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
           <ToolPicker
             copy={copy}
             locale={locale}
             selectedToolId={selectedToolId}
-            onSelectTool={selectTool}
+            onSelectTool={setSelectedToolId}
           />
+
           <PreferencePicker
             locale={locale}
             preferenceId={preferenceId}
             onPreferenceChange={setPreferenceId}
           />
-        </section>
+        </div>
 
         <SummaryCard
           copy={copy}
@@ -118,6 +126,8 @@ export function HomeFinderSection() {
         preferenceId={preferenceId}
         selectedTool={selectedTool}
       />
+
+      <RiskHint copy={copy} />
     </section>
   );
 }
@@ -135,46 +145,62 @@ function ToolPicker({
 }) {
   return (
     <div>
-      <h3 className="text-base font-semibold">{copy.chooseTitle}</h3>
-      <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+      <h3 className="text-base font-bold text-slate-950">{copy.chooseTitle}</h3>
+
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {finderTools.map((tool) => {
           const selected = selectedToolId === tool.id;
 
           return (
             <button
-              className={`relative rounded-2xl border p-3 text-left transition ${
-                selected
-                  ? "border-[#0071e3] bg-[#eef6ff]"
-                  : "border-[#e5e7eb] bg-white/70 hover:border-[#bfdbfe] hover:bg-white"
-              }`}
-              data-testid={`home-finder-tool-${tool.id}`}
               key={tool.id}
               onClick={() => onSelectTool(tool.id)}
               type="button"
+              className={[
+                "relative flex items-center gap-4 rounded-2xl border p-4 text-left transition",
+                selected
+                  ? "border-blue-500 bg-blue-50"
+                  : "border-slate-200 bg-white hover:border-blue-300",
+              ].join(" ")}
             >
               {selected && (
-                <span className="absolute right-3 top-3 grid h-4 w-4 place-items-center rounded-full bg-[#0071e3] text-[10px] font-bold text-white">
+                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
                   ✓
                 </span>
               )}
-              <div className="flex items-center gap-3 pr-5">
-                <span
-                  className={`grid h-8 w-8 place-items-center rounded-xl text-xs font-bold ${tool.accentClass}`}
-                >
-                  {tool.mark}
-                </span>
-                <div>
-                  <h4 className="text-sm font-semibold">{tool.name}</h4>
-                  <p className="mt-1 text-[11px] text-[#6b7280]">
-                    {copy.officialPrice} {formatMonthly(tool.officialPriceMonthlyUsd, locale)}
-                  </p>
-                </div>
+
+              <ToolLogo tool={tool} />
+
+              <div>
+                <h4 className="font-bold text-slate-950">{tool.name}</h4>
+                <p className="mt-1 text-sm text-slate-500">
+                  {copy.officialPrice}{" "}
+                  {formatMonthly(tool.officialPriceMonthlyUsd, locale)}
+                </p>
               </div>
             </button>
           );
         })}
       </div>
     </div>
+  );
+}
+
+function ToolLogo({ tool }: { tool: FinderTool }) {
+  const logoSrc = toolLogoMap[tool.iconName];
+
+  return (
+    <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+      {logoSrc ? (
+        <img
+          src={logoSrc}
+          alt={`${tool.name} logo`}
+          className="h-9 w-9 object-contain"
+        />
+      ) : (
+        <span className="text-sm font-bold text-slate-700">{tool.mark}</span>
+      )}
+    </span>
   );
 }
 
@@ -189,27 +215,32 @@ function PreferencePicker({
 }) {
   return (
     <div className="mt-6">
-      <h3 className="text-base font-semibold">{homeFinderCopy[locale].preferenceTitle}</h3>
-      <div className="mt-4 grid gap-2.5 md:grid-cols-3">
+      <h3 className="text-base font-bold text-slate-950">
+        {homeFinderCopy[locale].preferenceTitle}
+      </h3>
+
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {finderPreferences.map((preference) => {
           const selected = preference.id === preferenceId;
 
           return (
             <button
-              className={`rounded-2xl border p-3 text-left transition ${
-                selected
-                  ? "border-[#0071e3] bg-[#eef6ff]"
-                  : "border-[#e5e7eb] bg-white/70 hover:border-[#bfdbfe] hover:bg-white"
-              }`}
-              data-testid={`home-finder-preference-${preference.id}`}
               key={preference.id}
               onClick={() => onPreferenceChange(preference.id)}
               type="button"
+              className={[
+                "rounded-2xl border p-4 text-left transition",
+                selected
+                  ? "border-blue-500 bg-blue-50"
+                  : "border-slate-200 bg-white hover:border-blue-300",
+              ].join(" ")}
             >
-              <span className="text-sm font-semibold">{preference.title[locale]}</span>
-              <span className="mt-2 block text-[11px] leading-5 text-[#6b7280]">
+              <div className="font-bold text-slate-950">
+                {preference.title[locale]}
+              </div>
+              <div className="mt-2 text-sm text-slate-500">
                 {preference.description[locale]}
-              </span>
+              </div>
             </button>
           );
         })}
@@ -232,9 +263,10 @@ function SummaryCard({
   const title = `${selectedTool.name} ${copy.summarySingleSuffix}`;
 
   return (
-    <aside className="surface rounded-[24px] p-5">
-      <p className="text-base font-semibold">{title}</p>
-      <div className="mt-4 space-y-3 text-sm">
+    <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+      <h3 className="font-bold text-slate-950">{title}</h3>
+
+      <div className="mt-5 space-y-3">
         <SummaryRow
           label={copy.lowestStrategy}
           value={formatMonthly(summary.lowestCost, locale, true)}
@@ -249,22 +281,24 @@ function SummaryCard({
           value={formatMonthly(summary.monthlySaving, locale)}
           green
         />
-        <div className="rounded-2xl border border-[#e8f3ed] bg-[#f8fbf9] p-4">
-          <span className="text-xs font-medium text-[#04733b]">
-            {copy.yearlySaving}
-          </span>
-          <strong className="mt-1 block text-[26px] leading-none text-[#079447]">
-            {formatYearly(summary.yearlySaving, locale)}
-          </strong>
+      </div>
+
+      <div className="mt-5 rounded-2xl bg-emerald-50 p-4">
+        <div className="text-sm font-bold text-emerald-700">
+          {copy.yearlySaving}
+        </div>
+        <div className="mt-1 text-3xl font-black text-emerald-600">
+          {formatYearly(summary.yearlySaving, locale)}
         </div>
       </div>
+
       <a
-        className="mt-5 inline-flex min-h-10 items-center justify-center rounded-xl border border-[#0071e3] bg-white px-4 py-2 text-[12px] font-semibold text-[#0071e3] transition hover:bg-[#f0f7ff]"
         href="#recommended-platforms"
+        className="mt-5 inline-flex rounded-xl border border-blue-500 px-4 py-2 text-sm font-bold text-blue-600 hover:bg-blue-50"
       >
         {copy.viewRecommendedPlatforms}
       </a>
-    </aside>
+    </div>
   );
 }
 
@@ -281,40 +315,25 @@ function SummaryRow({
 }) {
   if (highlighted) {
     return (
-      <div className="flex items-center justify-between gap-4 rounded-2xl border border-[#dcecff] bg-[#f5f9ff] p-4">
-        <span className="font-medium text-[#4b6480]">{label}</span>
-        <strong className="text-lg tracking-[-0.02em] text-[#006bd6]">
-          {value}
-        </strong>
+      <div className="flex items-center justify-between rounded-2xl bg-blue-50 px-4 py-3">
+        <span className="text-sm text-slate-500">{label}</span>
+        <span className="font-black text-blue-600">{value}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-[#edf0f3] pb-3 last:border-b-0">
-      <span className="text-[#6b7280]">{label}</span>
-      <strong className={`text-base ${green ? "text-[#079447]" : "text-[#111111]"}`}>
+    <div className="flex items-center justify-between border-b border-slate-100 py-3 last:border-b-0">
+      <span className="text-sm text-slate-500">{label}</span>
+      <span
+        className={[
+          "font-bold",
+          green ? "text-emerald-600" : "text-slate-950",
+        ].join(" ")}
+      >
         {value}
-      </strong>
+      </span>
     </div>
-  );
-}
-
-function RiskHint({ copy }: { copy: Record<string, string> }) {
-  return (
-    <section className="mt-5 rounded-[20px] border border-[#e5e7eb] bg-[#f7f8fa] p-4">
-      <div className="flex gap-4">
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-[#e5e7eb] bg-white text-[#758396]">
-          <Icon name="shield" className="h-4 w-4" />
-        </span>
-        <div>
-          <h3 className="text-sm font-semibold">{copy.riskTitle}</h3>
-          <p className="mt-1.5 text-[12px] leading-5 text-[#667382]">
-            {copy.riskDescription}
-          </p>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -332,24 +351,23 @@ function RecommendationList({
   const sortedPlans = getSortedPlans(selectedTool.plans, preferenceId);
 
   return (
-    <section className="mt-4 scroll-mt-8 pb-3 md:mt-5" id="recommended-platforms">
-      <h3 className="text-xl font-semibold tracking-[-0.025em] md:text-2xl">
+    <div id="recommended-platforms" className="mt-8">
+      <h3 className="text-2xl font-black text-slate-950">
         {selectedTool.name} {copy.recommendationsTitle}
       </h3>
-      <p className="mt-2 max-w-[760px] text-sm leading-6 text-[#6b7280]">
+
+      <p className="mt-2 text-sm text-slate-500">
         {locale === "zh"
           ? `比较 ${selectedTool.name} 当前可用平台的价格、可用性和风险提示。`
           : `${copy.recommendationsDescription} ${selectedTool.name}.`}
       </p>
 
-      <div className="mt-4 grid items-stretch gap-4 lg:grid-cols-3">
+      <div className="mt-5 grid gap-5 lg:grid-cols-3">
         {sortedPlans.map((plan) => (
-          <PlanCard copy={copy} key={plan.id} locale={locale} plan={plan} />
+          <PlanCard key={plan.id} copy={copy} locale={locale} plan={plan} />
         ))}
       </div>
-
-      <RiskHint copy={copy} />
-    </section>
+    </div>
   );
 }
 
@@ -365,60 +383,71 @@ function PlanCard({
   const isOfficial = plan.planType === "official";
 
   return (
-    <div className="flex h-full flex-col rounded-[22px] border border-[#e5e7eb] bg-white p-5 shadow-[0_8px_24px_rgba(17,24,39,0.025)]">
-      <h5 className="text-sm font-semibold text-[#111111]">
+    <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+      <h4 className="font-black text-slate-950">
         {isOfficial ? copy.officialPlan : plan.platformName}
-      </h5>
+      </h4>
 
-      <strong className="mt-4 block text-[28px] leading-none tracking-[-0.035em] text-[#111111]">
+      <div className="mt-5 text-4xl font-black text-slate-950">
         {formatMonthly(plan.monthlyPriceUsd, locale, !isOfficial)}
-      </strong>
+      </div>
 
-      <span
-        className={`mt-3 w-fit rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-          isOfficial
-            ? "bg-[#f2f4f7] text-[#526071]"
-            : "bg-[#edf8f1] text-[#087a43]"
-        }`}
-      >
-        {isOfficial
-          ? copy.lowestRisk
-          : `${copy.savingLine} ${formatSavingPercent(plan.savingPercent)}`}
-      </span>
+      <div className="mt-3">
+        <span
+          className={[
+            "inline-flex rounded-full px-3 py-1 text-sm font-bold",
+            isOfficial
+              ? "bg-slate-100 text-slate-500"
+              : "bg-emerald-50 text-emerald-600",
+          ].join(" ")}
+        >
+          {isOfficial
+            ? copy.lowestRisk
+            : `${copy.savingLine} ${formatSavingPercent(plan.savingPercent)}`}
+        </span>
+      </div>
 
-      <dl className="mt-5 space-y-2.5 border-t border-[#edf0f3] pt-4 text-[12px]">
+      <div className="my-6 h-px bg-slate-100" />
+
+      <div className="space-y-4">
         <PlanRow label={copy.availability} value={plan.availability[locale]} />
         <PlanRow label={copy.riskNote} value={plan.riskNote[locale]} />
         <PlanRow label={copy.bestFor} value={plan.suitableFor[locale]} />
-      </dl>
-
-      <div className="mt-auto pt-6">
-        <a
-          className={`block rounded-xl px-4 py-2.5 text-center text-[12px] font-semibold transition ${
-            isOfficial
-              ? "border border-[#d8dee6] bg-white text-[#374151] hover:border-[#aebbc9] hover:bg-[#fafbfc]"
-              : "blue-button text-white"
-          }`}
-          href={plan.externalUrl}
-        >
-          {plan.ctaLabel[locale]}
-        </a>
       </div>
+
+      <a
+        href={plan.externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={[
+          "mt-6 flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold transition",
+          isOfficial
+            ? "border border-slate-200 text-slate-700 hover:bg-slate-50"
+            : "bg-blue-600 text-white hover:bg-blue-700",
+        ].join(" ")}
+      >
+        {plan.ctaLabel[locale]}
+      </a>
     </div>
   );
 }
 
-function PlanRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function PlanRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-start justify-between gap-3">
-      <dt className="text-[#6b7280]">{label}</dt>
-      <dd className="text-right font-medium text-[#303642]">{value}</dd>
+    <div className="flex items-center justify-between gap-4">
+      <span className="text-sm text-slate-500">{label}</span>
+      <span className="text-right text-sm font-bold text-slate-950">
+        {value}
+      </span>
+    </div>
+  );
+}
+
+function RiskHint({ copy }: { copy: Record<string, string> }) {
+  return (
+    <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-500">
+      <h3 className="font-bold text-slate-950">{copy.riskTitle}</h3>
+      <p className="mt-2 leading-6">{copy.riskDescription}</p>
     </div>
   );
 }
@@ -462,9 +491,11 @@ function getSortedPlans(plans: FinderPlan[], preferenceId: FinderPreferenceId) {
     if (a.planType === "official" && b.planType !== "official") {
       return 1;
     }
+
     if (a.planType !== "official" && b.planType === "official") {
       return -1;
     }
+
     return a.monthlyPriceUsd - b.monthlyPriceUsd;
   });
 }
@@ -475,6 +506,7 @@ function formatSavingPercent(savingPercent: number) {
 
 function formatMonthly(amount: number, locale: Locale, starting = false) {
   const price = `$${formatAmount(amount)}`;
+
   if (locale === "zh") {
     return starting ? `${price}/月起` : `${price}/月`;
   }
@@ -484,6 +516,7 @@ function formatMonthly(amount: number, locale: Locale, starting = false) {
 
 function formatYearly(amount: number, locale: Locale) {
   const price = `$${formatAmount(amount)}`;
+
   return locale === "zh" ? `${price}/年` : `${price}/year`;
 }
 
