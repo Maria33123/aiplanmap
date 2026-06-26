@@ -135,7 +135,7 @@ export const platforms: PlatformMock[] = [
     availability: "High",
     riskNote: "Moderate",
     bestFor: "Sharing transparency",
-    url: "#",
+    url: "https://familypro.io?invite=LTd2fa1c",
   },
   {
     id: "sharesub",
