@@ -77,9 +77,9 @@ const imageLogoMap: Record<string, string> = {
 };
 
 const imageLogoSizeMap: Record<string, string> = {
-  chatgpt: "h-8 w-8",
-  grok: "h-8 w-8",
-  claude: "h-8 w-8",
+  chatgpt: "h-7 w-7",
+  grok: "h-7 w-7",
+  claude: "h-7 w-7",
 };
 
 export function HomeFinderSection() {
@@ -100,9 +100,9 @@ export function HomeFinderSection() {
   const summary = useMemo(() => getSummary(selectedTool), [selectedTool]);
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 pb-12 pt-6 sm:px-6 lg:px-8">
-      <div className="grid gap-6 lg:grid-cols-[1.65fr_1fr]">
-        <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="mx-auto w-full max-w-5xl px-4 pb-10 pt-4 sm:px-5 lg:px-6">
+      <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
+        <div className="rounded-[22px] border border-slate-200 bg-white p-4 shadow-sm">
           <ToolPicker
             copy={copy}
             locale={locale}
@@ -150,9 +150,9 @@ function ToolPicker({
 }) {
   return (
     <div>
-      <h3 className="text-base font-bold text-slate-950">{copy.chooseTitle}</h3>
+      <h3 className="text-sm font-bold text-slate-950">{copy.chooseTitle}</h3>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
         {finderTools.map((tool) => {
           const selected = selectedToolId === tool.id;
 
@@ -162,25 +162,25 @@ function ToolPicker({
               onClick={() => onSelectTool(tool.id)}
               type="button"
               className={[
-                "relative flex items-center gap-3 rounded-2xl border p-3 text-left transition",
+                "relative flex min-h-[58px] items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition",
                 selected
                   ? "border-blue-500 bg-blue-50"
                   : "border-slate-200 bg-white hover:border-blue-300",
               ].join(" ")}
             >
               {selected && (
-                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                <span className="absolute right-2.5 top-2.5 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
                   ✓
                 </span>
               )}
 
               <ToolLogo tool={tool} />
 
-              <div>
-                <h4 className="text-sm font-bold text-slate-950 sm:text-base">
+              <div className="min-w-0">
+                <h4 className="truncate text-sm font-bold text-slate-950">
                   {tool.name}
                 </h4>
-                <p className="mt-1 text-xs text-slate-500 sm:text-sm">
+                <p className="mt-0.5 text-xs text-slate-500">
                   {copy.officialPrice}{" "}
                   {formatMonthly(tool.officialPriceMonthlyUsd, locale)}
                 </p>
@@ -196,17 +196,17 @@ function ToolPicker({
 function ToolLogo({ tool }: { tool: FinderTool }) {
   if (tool.iconName === "gemini") {
     return (
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center">
         <GeminiLogo />
       </span>
     );
   }
 
   const logoSrc = imageLogoMap[tool.iconName];
-  const logoClass = imageLogoSizeMap[tool.iconName] ?? "h-8 w-8";
+  const logoClass = imageLogoSizeMap[tool.iconName] ?? "h-7 w-7";
 
   return (
-    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-visible">
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-visible">
       {logoSrc ? (
         <img
           src={logoSrc}
@@ -224,7 +224,7 @@ function GeminiLogo() {
   return (
     <svg
       viewBox="0 0 64 64"
-      className="h-8 w-8"
+      className="h-7 w-7"
       aria-hidden="true"
       focusable="false"
     >
@@ -246,12 +246,12 @@ function PreferencePicker({
   onPreferenceChange: (preferenceId: FinderPreferenceId) => void;
 }) {
   return (
-    <div className="mt-6">
-      <h3 className="text-base font-bold text-slate-950">
+    <div className="mt-5">
+      <h3 className="text-sm font-bold text-slate-950">
         {homeFinderCopy[locale].preferenceTitle}
       </h3>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
         {finderPreferences.map((preference) => {
           const selected = preference.id === preferenceId;
 
@@ -261,16 +261,16 @@ function PreferencePicker({
               onClick={() => onPreferenceChange(preference.id)}
               type="button"
               className={[
-                "rounded-2xl border p-4 text-left transition",
+                "rounded-xl border px-3 py-3 text-left transition",
                 selected
                   ? "border-blue-500 bg-blue-50"
                   : "border-slate-200 bg-white hover:border-blue-300",
               ].join(" ")}
             >
-              <div className="font-bold text-slate-950">
+              <div className="text-sm font-bold text-slate-950">
                 {preference.title[locale]}
               </div>
-              <div className="mt-2 text-sm text-slate-500">
+              <div className="mt-1.5 text-xs text-slate-500">
                 {preference.description[locale]}
               </div>
             </button>
@@ -295,10 +295,10 @@ function SummaryCard({
   const title = `${selectedTool.name} ${copy.summarySingleSuffix}`;
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
-      <h3 className="font-bold text-slate-950">{title}</h3>
+    <div className="rounded-[22px] border border-slate-200 bg-white p-4 shadow-sm">
+      <h3 className="text-sm font-bold text-slate-950">{title}</h3>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-4 space-y-2">
         <SummaryRow
           label={copy.lowestStrategy}
           value={formatMonthly(summary.lowestCost, locale, true)}
@@ -315,18 +315,18 @@ function SummaryCard({
         />
       </div>
 
-      <div className="mt-5 rounded-2xl bg-emerald-50 p-4">
-        <div className="text-sm font-bold text-emerald-700">
+      <div className="mt-4 rounded-xl bg-emerald-50 p-3">
+        <div className="text-xs font-bold text-emerald-700">
           {copy.yearlySaving}
         </div>
-        <div className="mt-1 text-3xl font-black text-emerald-600">
+        <div className="mt-1 text-2xl font-black text-emerald-600">
           {formatYearly(summary.yearlySaving, locale)}
         </div>
       </div>
 
       <a
         href="#recommended-platforms"
-        className="mt-5 inline-flex rounded-xl border border-blue-500 px-4 py-2 text-sm font-bold text-blue-600 hover:bg-blue-50"
+        className="mt-4 inline-flex rounded-lg border border-blue-500 px-3 py-2 text-xs font-bold text-blue-600 hover:bg-blue-50"
       >
         {copy.viewRecommendedPlatforms}
       </a>
@@ -347,19 +347,19 @@ function SummaryRow({
 }) {
   if (highlighted) {
     return (
-      <div className="flex items-center justify-between rounded-2xl bg-blue-50 px-4 py-3">
-        <span className="text-sm text-slate-500">{label}</span>
-        <span className="font-black text-blue-600">{value}</span>
+      <div className="flex items-center justify-between rounded-xl bg-blue-50 px-3 py-2">
+        <span className="text-xs text-slate-500">{label}</span>
+        <span className="text-sm font-black text-blue-600">{value}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-between border-b border-slate-100 py-3 last:border-b-0">
-      <span className="text-sm text-slate-500">{label}</span>
+    <div className="flex items-center justify-between border-b border-slate-100 py-2 last:border-b-0">
+      <span className="text-xs text-slate-500">{label}</span>
       <span
         className={[
-          "font-bold",
+          "text-sm font-bold",
           green ? "text-emerald-600" : "text-slate-950",
         ].join(" ")}
       >
@@ -383,18 +383,18 @@ function RecommendationList({
   const sortedPlans = getSortedPlans(selectedTool.plans, preferenceId);
 
   return (
-    <div id="recommended-platforms" className="mt-8">
-      <h3 className="text-2xl font-black text-slate-950">
+    <div id="recommended-platforms" className="mt-7">
+      <h3 className="text-xl font-black text-slate-950">
         {selectedTool.name} {copy.recommendationsTitle}
       </h3>
 
-      <p className="mt-2 text-sm text-slate-500">
+      <p className="mt-1.5 text-xs text-slate-500">
         {locale === "zh"
           ? `比较 ${selectedTool.name} 当前可用平台的价格、可用性和风险提示。`
           : `${copy.recommendationsDescription} ${selectedTool.name}.`}
       </p>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-3">
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
         {sortedPlans.map((plan) => (
           <PlanCard key={plan.id} copy={copy} locale={locale} plan={plan} />
         ))}
@@ -415,19 +415,19 @@ function PlanCard({
   const isOfficial = plan.planType === "official";
 
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm">
-      <h4 className="font-black text-slate-950">
+    <div className="rounded-[22px] border border-slate-200 bg-white p-4 shadow-sm">
+      <h4 className="text-sm font-black text-slate-950">
         {isOfficial ? copy.officialPlan : plan.platformName}
       </h4>
 
-      <div className="mt-5 text-4xl font-black text-slate-950">
+      <div className="mt-4 text-3xl font-black text-slate-950">
         {formatMonthly(plan.monthlyPriceUsd, locale, !isOfficial)}
       </div>
 
-      <div className="mt-3">
+      <div className="mt-2.5">
         <span
           className={[
-            "inline-flex rounded-full px-3 py-1 text-sm font-bold",
+            "inline-flex rounded-full px-2.5 py-1 text-xs font-bold",
             isOfficial
               ? "bg-slate-100 text-slate-500"
               : "bg-emerald-50 text-emerald-600",
@@ -439,9 +439,9 @@ function PlanCard({
         </span>
       </div>
 
-      <div className="my-6 h-px bg-slate-100" />
+      <div className="my-5 h-px bg-slate-100" />
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <PlanRow label={copy.availability} value={plan.availability[locale]} />
         <PlanRow label={copy.riskNote} value={plan.riskNote[locale]} />
         <PlanRow label={copy.bestFor} value={plan.suitableFor[locale]} />
@@ -452,7 +452,7 @@ function PlanCard({
         target="_blank"
         rel="noopener noreferrer"
         className={[
-          "mt-6 flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-bold transition",
+          "mt-5 flex w-full items-center justify-center rounded-lg px-3 py-2.5 text-xs font-bold transition",
           isOfficial
             ? "border border-slate-200 text-slate-700 hover:bg-slate-50"
             : "bg-blue-600 text-white hover:bg-blue-700",
@@ -466,9 +466,9 @@ function PlanCard({
 
 function PlanRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <span className="text-sm text-slate-500">{label}</span>
-      <span className="text-right text-sm font-bold text-slate-950">
+    <div className="flex items-center justify-between gap-3">
+      <span className="text-xs text-slate-500">{label}</span>
+      <span className="text-right text-xs font-bold text-slate-950">
         {value}
       </span>
     </div>
@@ -477,9 +477,9 @@ function PlanRow({ label, value }: { label: string; value: string }) {
 
 function RiskHint({ copy }: { copy: Record<string, string> }) {
   return (
-    <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-500">
+    <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-xs text-slate-500">
       <h3 className="font-bold text-slate-950">{copy.riskTitle}</h3>
-      <p className="mt-2 leading-6">{copy.riskDescription}</p>
+      <p className="mt-1.5 leading-5">{copy.riskDescription}</p>
     </div>
   );
 }
