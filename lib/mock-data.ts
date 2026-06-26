@@ -125,7 +125,7 @@ export const platforms: PlatformMock[] = [
     availability: "High",
     riskNote: "Moderate",
     bestFor: "Lowest-price priority",
-    url: "#",
+    url: "https://www.gamsgo.com/partner/at22B",
   },
   {
     id: "spliiit",
