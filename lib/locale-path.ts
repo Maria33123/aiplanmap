@@ -1,9 +1,11 @@
 export function getAlternateLocalePath(pathname: string) {
   const normalizedPath =
     pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
-  const isChinese = normalizedPath === "/zh" || normalizedPath.startsWith("/zh/");
 
-  if (isChinese) {
+  const isChinesePath =
+    normalizedPath === "/zh" || normalizedPath.startsWith("/zh/");
+
+  if (isChinesePath) {
     const englishPath = normalizedPath.replace(/^\/zh(?=\/|$)/, "");
     return englishPath || "/";
   }
@@ -12,17 +14,5 @@ export function getAlternateLocalePath(pathname: string) {
     return "/zh";
   }
 
-  if (normalizedPath === "/finder") {
-    return "/zh";
-  }
-
-  if (
-    normalizedPath === "/blog" ||
-    normalizedPath.startsWith("/blog/") ||
-    normalizedPath === "/platform-notice"
-  ) {
-    return `/zh${normalizedPath}`;
-  }
-
-  return "/zh";
+  return `/zh${normalizedPath}`;
 }
