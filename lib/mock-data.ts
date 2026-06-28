@@ -172,7 +172,11 @@ export const recommendationPlansByToolId: Record<
       "Moderate",
       "Sharing transparency",
     ),
-    officialPlan(20, "$20/mo"),
+    officialPlan(
+      20,
+      "$20/mo",
+      "https://chatgpt.com/plans/plus/",
+    ),
   ],
 
   "gemini-advanced": [
@@ -194,7 +198,11 @@ export const recommendationPlansByToolId: Record<
       "Moderate",
       "Sharing transparency",
     ),
-    officialPlan(19.99, "$19.99/mo"),
+    officialPlan(
+      19.99,
+      "$19.99/mo",
+      "https://gemini.google/subscriptions/",
+    ),
   ],
 
   grok: [
@@ -216,7 +224,11 @@ export const recommendationPlansByToolId: Record<
       "Moderate",
       "Exclusive plan, minimum 3 months",
     ),
-    officialPlan(30, "$30/mo"),
+    officialPlan(
+      30,
+      "$30/mo",
+      "https://grok.com/plans",
+    ),
   ],
 
   "claude-pro": [
@@ -238,7 +250,11 @@ export const recommendationPlansByToolId: Record<
       "Moderate",
       "Sharing transparency",
     ),
-    officialPlan(20, "$20/mo"),
+    officialPlan(
+      20,
+      "$20/mo",
+      "https://claude.com/pricing",
+    ),
   ],
 };
 
@@ -267,7 +283,11 @@ function platformPlan(
   };
 }
 
-function officialPlan(price: number, priceLabel: string): RecommendationPlanMock {
+function officialPlan(
+  price: number,
+  priceLabel: string,
+  url: string,
+): RecommendationPlanMock {
   const provider = getPlatform("official");
 
   return {
@@ -280,7 +300,7 @@ function officialPlan(price: number, priceLabel: string): RecommendationPlanMock
     riskLevel: provider.riskNote,
     bestFor: provider.bestFor,
     ctaLabel: "View Official Plan",
-    url: provider.url,
+    url,
   };
 }
 
