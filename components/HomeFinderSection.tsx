@@ -169,7 +169,7 @@ function ToolPicker({
               ].join(" ")}
             >
               {selected && (
-                <span className="absolute right-2.5 top-2.5 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+                <span className="absolute right-2.5 top-2.5 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
                   ✓
                 </span>
               )}
@@ -451,12 +451,7 @@ function PlanCard({
         href={plan.externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={[
-          "mt-5 flex w-full items-center justify-center rounded-lg px-3 py-2.5 text-xs font-bold transition",
-          isOfficial
-            ? "border border-slate-200 text-slate-700 hover:bg-slate-50"
-            : "bg-blue-600 text-white hover:bg-blue-700",
-        ].join(" ")}
+        className="mt-5 flex w-full items-center justify-center rounded-lg bg-blue-600 px-3 py-2.5 text-xs font-bold text-white transition hover:bg-blue-700"
       >
         {plan.ctaLabel[locale]}
       </a>
